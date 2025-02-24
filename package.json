@@ -1,6 +1,6 @@
 {
     "name": "@splooshai/hello-world",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "Example application demonstrating SplooshAI's multi-tenant deployment architecture",
     "private": true,
     "scripts": {
