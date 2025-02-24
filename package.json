@@ -1,0 +1,33 @@
+{
+    "name": "@splooshai/hello-world",
+    "version": "0.0.0",
+    "description": "Example application demonstrating SplooshAI's multi-tenant deployment architecture",
+    "private": true,
+    "scripts": {
+        "start": "docker-compose up",
+        "start:detached": "docker-compose up -d",
+        "build": "docker-compose build",
+        "clean": "docker-compose down --rmi local",
+        "clean:all": "docker-compose down --rmi all -v",
+        "logs": "docker-compose logs -f",
+        "test": "docker-compose -f docker-compose.yml -f docker-compose.test.yml up --build --exit-code-from app",
+        "dev": "docker-compose up --build",
+        "restart": "docker-compose restart",
+        "stop": "docker-compose stop"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SplooshAI/hello-world.git"
+    },
+    "keywords": [
+        "splooshai",
+        "docker",
+        "example"
+    ],
+    "author": "SplooshAI",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/SplooshAI/hello-world/issues"
+    },
+    "homepage": "https://github.com/SplooshAI/hello-world#readme"
+}
