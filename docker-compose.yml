@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    image: sploosh-hello-world:latest
+    container_name: hello-world
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - hello-world-network
+
+networks:
+  hello-world-network:
+    driver: bridge
