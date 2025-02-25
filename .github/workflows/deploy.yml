@@ -1,44 +1,39 @@
 name: Deploy to Production
 
 on:
-  workflow_run:
-    workflows: ["Main Branch Merge"]
-    types:
-      - completed
-    branches:
-      - main
+  push:
+    branches: [main]
 
 jobs:
   build-and-push:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
     
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v3
+      
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v2
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: |
-            ghcr.io/splooshai/hello-world:latest
-            ghcr.io/splooshai/hello-world:${{ github.sha }}
+          platforms: linux/amd64,linux/arm64
+          tags: ghcr.io/splooshai/hello-world:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
