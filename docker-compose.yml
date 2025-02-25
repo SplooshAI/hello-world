@@ -1,7 +1,6 @@
 services:
   app:
-    build: .
-    image: sploosh-hello-world:latest
+    image: ghcr.io/splooshai/hello-world:latest
     container_name: hello-world
     restart: unless-stopped
     ports:
