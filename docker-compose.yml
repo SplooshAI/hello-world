@@ -1,5 +1,10 @@
+version: '3.8'
+
 services:
   app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: ghcr.io/splooshai/hello-world:latest
     container_name: hello-world
     restart: unless-stopped
