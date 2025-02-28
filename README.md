@@ -17,6 +17,8 @@ docker-compose up --build
 
 > **Note:** Automatic deployment is temporarily disabled until coordination with the infrastructure team for project setup is complete.
 
+**Important Context:** This hello-world project is technically configured for deployment to the Sploosh.AI environment as a subdomain and project. However, since this repository serves primarily as a template and reference implementation, the deployment workflow has been intentionally disabled to prevent accidental deployments from unsuspecting engineers.
+
 To deploy this application:
 
 1. Contact the infrastructure team to set up the necessary deployment environment
