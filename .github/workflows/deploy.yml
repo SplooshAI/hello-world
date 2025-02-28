@@ -38,6 +38,8 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
+    # Temporarily disabled until coordination with infrastructure team
+    if: false  # This condition ensures the job is skipped
     needs: build-and-push
     runs-on: ubuntu-latest
     
